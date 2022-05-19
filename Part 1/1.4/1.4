@@ -1,0 +1,2 @@
+Commands: docker container run -it --name exer4 ubuntu sh -c 'echo "Input website :"; read website; echo "Searching.."; sleep 1; curl http://$website;'; docker container exec exer4 apt update
+; docker container exec exer4 apt install -y curl
