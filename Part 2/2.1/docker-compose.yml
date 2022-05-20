@@ -1,0 +1,8 @@
+version: '2'
+services:
+  simple-web-service:
+    image: devopsdockeruh/simple-web-service:latest
+    build: .
+    volumes:
+      - ./text.log:/usr/src/app/text.log:rw
+

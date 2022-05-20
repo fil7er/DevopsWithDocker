@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  hello-frontend:
+    image: node:16.0.0
+    working_dir: /usr/src/app
+    environment:
+      - REACT_APP_BACKEND_URL="http://localhost:8000/"
+    build: .
+    ports:
+      - 5000:5000
+    command: >
+      sh -c "npm init -y &&
+            npm install &&
+            RUN npm run build &&
+            RUN npm install -g serve"
+  hello-backend:
+    image: golang:1.16
+    working_dir: /usr/src/app
+    environment:
+      - REQUEST_ORIGIN="http://localhost:5000"
+      - port="8080"
+    build: .
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 8080:8080
+    command: >
+      sh -c "
+      go build &&
+            ./server"
