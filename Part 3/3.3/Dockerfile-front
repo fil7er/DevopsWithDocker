@@ -1,0 +1,20 @@
+FROM ubuntu:18.04
+
+EXPOSE 5000
+WORKDIR /usr/src/app
+
+COPY . .
+
+ENV REACT_APP_BACKEND_URL="http://localhost:8080/"
+
+RUN apt-get update && apt-get install -y nodejs
+RUN npm install
+RUN npm run build
+RUN npm install -g serve
+
+RUN useradd -m nonroot
+RUN chown nonroot /usr/src/app
+
+USER nonroot
+
+CMD ["serve", "-s", "-l", "5000", "build"]

@@ -1,0 +1,16 @@
+Output before:
+
+REPOSITORY                          TAG             IMAGE ID       CREATED         SIZE
+frontend                            latest          6ac1f3a9024e   5 minutes ago   920MB
+backend                             latest          38ddb41f72ea   6 minutes ago   164MB
+
+
+Output after:
+
+REPOSITORY                          TAG             IMAGE ID       CREATED          SIZE
+frontend-opt                        latest          444f8bd1c412   55 seconds ago   164MB
+backend-opt                         latest          a679559a1477   25 minutes ago   302MB
+backend                             latest          6ac1f3a9024e   50 minutes ago   920MB
+frontend                            latest          38ddb41f72ea   50 minutes ago   164MB
+
+Looks like is used alpine version in golang already
