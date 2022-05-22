@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+
+  frontend:
+    ports:
+      - '3000:3000'
+    image: frontend
+    build: 
+      dockerfile: Dockerfile
+      context: ./frontend
+  
+  backend:
+    ports:
+      - '5000:5000'
+    image: backend
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+    volumes:
+      - model:/src/model
+
+  training:
+    image: training
+    build: 
+      dockerfile: Dockerfile
+      context: ./training
+    volumes:
+      - model:/src/model
+      - imgs:/src/imgs
+      - data:/src/data
+
+volumes:
+  model:
+  imgs:
+  data:
+
+
+
+
+
+    
+  

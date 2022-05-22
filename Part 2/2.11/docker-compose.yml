@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nodejs:
+    image: fil7er/nodejs-hello
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./:/usr/src/app
+  
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
